@@ -1,0 +1,6 @@
+{
+  "name": "Aplikasi Inventaris Barang",
+  "description": "Sistem manajemen stok gudang terpadu, pencatatan transaksi barang masuk & keluar, pemantauan batas stok minimum real-time, custom alur operasional, dan cetak laporan PDF otomatis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
