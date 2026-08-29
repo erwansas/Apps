@@ -28,7 +28,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
   companySettings
 }) => {
   const [pinInput, setPinInput] = useState('');
-  const [showPin, setShowPin] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -173,7 +172,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
               <div className="relative">
                 <input
                   id="login-pin-input"
-                  type={showPin ? 'text' : 'password'}
+                  type="password"
                   inputMode="numeric"
                   value={pinInput}
                   onChange={(e) => {
@@ -182,17 +181,9 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                   }}
                   placeholder="Masukkan 4 digit PIN..."
                   autoFocus
-                  className="w-full px-4 py-3.5 pl-11 pr-11 bg-slate-950/80 border border-slate-700/90 rounded-2xl text-center text-lg font-mono font-bold tracking-widest text-white placeholder:text-slate-600 placeholder:text-sm placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-inner"
+                  className="w-full px-4 py-3.5 pl-11 bg-slate-950/80 border border-slate-700/90 rounded-2xl text-center text-lg font-mono font-bold tracking-widest text-white placeholder:text-slate-600 placeholder:text-sm placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-inner"
                 />
                 <KeyRound className="w-5 h-5 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                <button
-                  type="button"
-                  onClick={() => setShowPin(!showPin)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition-colors p-1"
-                  title={showPin ? 'Sembunyikan PIN' : 'Tampilkan PIN'}
-                >
-                  {showPin ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
               </div>
             </div>
 
@@ -287,29 +278,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
             </p>
           </div>
 
-          {/* Role PIN Quick Reference / Guidance */}
-          <div className="p-3.5 rounded-2xl bg-slate-950/60 border border-slate-800/80 space-y-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-300">
-              <Info className="w-3.5 h-3.5 text-blue-400" />
-              <span>Panduan PIN Akses Sistem:</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2 text-[10px]">
-              <div className="p-2 rounded-xl bg-slate-900 border border-rose-500/20 text-center">
-                <span className="block font-bold text-rose-400">Admin</span>
-                <span className="font-mono text-slate-300">PIN: 1234</span>
-              </div>
-              <div className="p-2 rounded-xl bg-slate-900 border border-amber-500/20 text-center">
-                <span className="block font-bold text-amber-400">Supervisor</span>
-                <span className="font-mono text-slate-300">PIN: 2222</span>
-              </div>
-              <div className="p-2 rounded-xl bg-slate-900 border border-blue-500/20 text-center">
-                <span className="block font-bold text-blue-400">Staf Operator</span>
-                <span className="font-mono text-slate-300">PIN: 1111</span>
-              </div>
-            </div>
-            <p className="text-[10px] text-slate-500 text-center">
-              PIN dapat diubah sewaktu-waktu oleh Administrator di menu Pengaturan.
-            </p>
+          {/* Security Notice */}
+          <div className="p-3 rounded-2xl bg-slate-950/70 border border-slate-800/90 flex items-center gap-2.5 text-[11px] text-slate-400">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>
+              Akses dibatasi hanya untuk staf resmi. Hubungi Administrator jika Anda lupa PIN akun.
+            </span>
           </div>
 
         </div>

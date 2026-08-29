@@ -37,7 +37,6 @@ export const RoleSwitchModal: React.FC<RoleSwitchModalProps> = ({
   onLogout
 }) => {
   const [pinInput, setPinInput] = useState('');
-  const [showPin, setShowPin] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [copiedLink, setCopiedLink] = useState(false);
   const [successRole, setSuccessRole] = useState<UserRole | null>(null);
@@ -210,7 +209,7 @@ export const RoleSwitchModal: React.FC<RoleSwitchModalProps> = ({
                 </label>
                 <div className="relative">
                   <input
-                    type={showPin ? "text" : "password"}
+                    type="password"
                     required
                     autoFocus
                     value={pinInput}
@@ -220,17 +219,8 @@ export const RoleSwitchModal: React.FC<RoleSwitchModalProps> = ({
                     }}
                     placeholder="Masukkan PIN Anda..."
                     maxLength={12}
-                    className="w-full pl-3.5 pr-10 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none font-mono text-center tracking-widest font-bold"
+                    className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none font-mono text-center tracking-widest font-bold"
                   />
-                  <button
-                    type="button"
-                    onClick={() => setShowPin(!showPin)}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 cursor-pointer"
-                    tabIndex={-1}
-                    aria-label={showPin ? "Sembunyikan PIN" : "Tampilkan PIN"}
-                  >
-                    {showPin ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
                 </div>
                 <p className="text-[11px] text-slate-500 text-center">
                   Sistem otomatis mendeteksi peran Staf, Supervisor, atau Administrator berdasarkan PIN yang Anda masukkan.
